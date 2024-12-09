@@ -1,0 +1,38 @@
+<div class="container">
+    <!-- Determinar si Spring Boot me dice si tiene credenciales válidas-->
+    @if(usuarioLogueado){
+    <h3>Listado de Usuarios</h3>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th style="text-align:center" scope="col">#</th>
+                <th style="text-align:center" scope="col">Nombre</th>
+                <th style="text-align:center" scope="col">Sueldo</th>
+                <th style="text-align:center" scope="col">Estado</th>
+                <th style="text-align:center" scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (usuario of usuarios; track usuario.id) {
+            <!--<p>{{ usuario.nombre }}</p>-->
+            <tr>
+                <th scope="row">{{usuario.id}}</th>
+                <td>{{ usuario.nombre }}</td>
+                <td>{{ usuario.sueldo }}</td>
+                @if (usuario.activo) {
+                <td>Activo</td>
+                }@else {
+                <td>Baja</td>
+                }
+                <td style="text-align: center">
+                    <button type="button" class="btn btn-primary">Actualizar</button>&nbsp;
+                    <button type="button" class="btn btn-danger">Eliminar</button>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+    }@else {
+    <h2>Iniciar sesión</h2>
+    }
+</div>
